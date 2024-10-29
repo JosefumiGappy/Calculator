@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0e3d7; /* Light brown background */
+            margin: 0;
+        }
+        .container {
+            position: relative; /* Position relative for child positioning */
+            width: 300px; /* Fixed width */
+            height: 150px; /* Fixed height */
+            background-color: #8B5A2B; /* Brown window color */
+            padding: 20px; /* Inner padding */
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            display: flex; /* Use Flexbox to center text vertically */
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Hide overflow for the rainbow box */
+        }
+        .rainbow-text {
+            position: relative; /* Position for the text */
+            font-family: Arial, sans-serif;
+            font-size: 2em;
+            color: transparent; /* Make text transparent to show rainbow background */
+            background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); /* Rainbow gradient */
+            -webkit-background-clip: text; /* For Safari */
+            background-clip: text; /* Clip the background to the text */
+        }
+        .rainbow-background {
+            position: absolute; /* Position absolutely within the container */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); /* Rainbow background */
+            opacity: 0; /* Make it invisible */
+            pointer-events: none; /* Disable interaction */
+        }
+        .default-color {
+            color: white; /* Default text color when not rainbow */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="rainbow-background"></div>
+        <h1 id="text" class="rainbow-text">You Are </h1>
+    </div>
+
+    <script>
+        let text = document.getElementById("text");
+        const chance = Math.floor(Math.random() * 100 + 1);
+        if (chance < 50) {
+            text.innerHTML = "You Are Gay";
+            text.classList.add("rainbow-text"); // Add rainbow class for rainbow effect
+        } else {
+            text.innerHTML = "You Are Straight";
+            text.classList.remove("rainbow-text"); // Remove rainbow class
+            text.style.color = "white"; // Set default color
+        }
+    </script>
+</body>
+</html>
